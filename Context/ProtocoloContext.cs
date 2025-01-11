@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TesteDevDbm.Models;
 
@@ -14,6 +10,18 @@ namespace TesteDevDbm.Context
 
         }
 
-        public DbSet<Cliente> Clientes { get;  set; }
+        public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<StatusProtocolo> StatusProtocolos { get; set; }
+
+         protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<StatusProtocolo>().HasData(
+                new StatusProtocolo { IdStatus = 1, NomeStatus = "Aberto" },
+                new StatusProtocolo { IdStatus = 2, NomeStatus = "Em Andamento" },
+                new StatusProtocolo { IdStatus = 3, NomeStatus = "Fechado" }
+            );
+        }
     }
 }
