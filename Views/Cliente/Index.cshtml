@@ -1,19 +1,19 @@
 @model IEnumerable<TesteDevDbm.Models.Cliente>
 @{
-    ViewData["Title"] = "Listagem de clientes"; //nome da nossa aba
+    ViewData["Title"] = "Listagem de clientes";
 }
 
 <h2>Clientes</h2>
 
 <p>
-    <a asp-action="Criar">Novo Cliente</a> @* hyperlink *@
+    <a asp-action="Criar">Novo Cliente</a> 
 </p>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.IdCliente) @*cabeçalho*@
+                @Html.DisplayNameFor(model => model.IdCliente)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Nome)
@@ -53,7 +53,6 @@
                     <a asp-action="Editar" asp-route-id="@item.IdCliente">Editar</a> |
                     <a asp-action="Detalhes" asp-route-id="@item.IdCliente">Detalhes</a> |
                     <a asp-action="Deletar" asp-route-id="@item.IdCliente">Deletar</a>
-                    <input type="checkbox" asp-action="Selecionar">
                 </td>
             </tr>
         }
