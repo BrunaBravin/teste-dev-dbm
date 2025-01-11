@@ -1,0 +1,61 @@
+@model IEnumerable<TesteDevDbm.Models.Cliente>
+@{
+    ViewData["Title"] = "Listagem de clientes"; //nome da nossa aba
+}
+
+<h2>Clientes</h2>
+
+<p>
+    <a asp-action="Criar">Novo Cliente</a> @* hyperlink *@
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCliente) @*cabeçalho*@
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Endereco)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) 
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.IdCliente)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Telefone)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Endereco)
+                </td>
+                <td>
+                    <a asp-action="Editar" asp-route-id="@item.IdCliente">Editar</a> |
+                    <a asp-action="Detalhes" asp-route-id="@item.IdCliente">Detalhes</a> |
+                    <a asp-action="Deletar" asp-route-id="@item.IdCliente">Deletar</a>
+                    <input type="checkbox" asp-action="Selecionar">
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

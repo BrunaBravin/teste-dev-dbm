@@ -1,0 +1,78 @@
+# Sistema Operacional
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Configurações de Usuário e IDE
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Artefatos de Build
+bin/
+obj/
+out/
+
+# Cache do NuGet
+*.nupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Arquivos Temporários
+*.swp
+*.temp
+*.tmp
+*.bak
+*.old
+*.orig
+*.rej
+*.sublime-workspace
+*.sublime-project
+*.sublime-settings
+
+# Configurações do Rider e JetBrains
+*.iml
+.idea/
+*.ipr
+*.iws
+.idea/
+
+# Arquivos Gerados pelo Visual Studio
+.vs/
+
+# Publicações Locais
+wwwroot/lib/
+wwwroot/node_modules/
+
+# Arquivos de Banco de Dados Local
+*.mdf
+*.ldf
+*.sqlite
+*.sqlite3
+
+# Configurações de Ambiente
+.env
+.env.*
+
+# Configurações de Deploy
+.publish/
+*.publish.xml
+
+# Dependências do Node.js
+node_modules/
+
+# Arquivos de Logs de Depuração
+*.pid
+*.log
+*.trace
+
+# Configurações de Ferramentas
+*.orig
