@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using TesteDevDbm.Context;
+using TesteDevDbm.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,8 @@ builder.Services.AddDbContext<ProtocoloContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ConexaoPadrao")));
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IProtocoloFollowService, ProtocoloFollowService>();
 
 var app = builder.Build();
 

@@ -12,7 +12,7 @@ namespace TesteDevDbm.Models
         public int ProtocoloId { get; set; }
 
         [Required]
-        public DateTime DataAcao { get; set; }
+        public DateOnly DataAcao { get; set; }
 
         [Required]
         [StringLength(500)]

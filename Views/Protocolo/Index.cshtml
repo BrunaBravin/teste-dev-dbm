@@ -1,4 +1,7 @@
-@model IEnumerable<TesteDevDbm.Models.Protocolo>
+
+@using TesteDevDbm.Models.ViewModels;
+
+@model ProtocoloViewModel
 @{
     ViewData["Title"] = "Listagem de protocolos";
 }
@@ -16,7 +19,7 @@
                 Id
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Titulo)
+                Título
             </th>
             <th>
                 Data Abertura
@@ -34,7 +37,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model) 
+        @foreach (var item in Model.Protocolos) 
         {
             <tr>
                 <td>
@@ -64,3 +67,10 @@
         }
     </tbody>
 </table>
+
+<div>
+    @for (int i = 1; i <= Model.TotalPages; i++)
+    {
+        <a asp-action="Index" asp-route-pageNumber="@i" class="btn btn-link">@i</a>
+    }
+</div>

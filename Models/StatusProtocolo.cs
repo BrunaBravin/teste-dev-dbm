@@ -7,7 +7,7 @@ namespace TesteDevDbm.Models
         [Key]
         public int IdStatus { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O nome do status é obrigatório.")]
         [StringLength(50)]
         public string NomeStatus { get; set; }
     }

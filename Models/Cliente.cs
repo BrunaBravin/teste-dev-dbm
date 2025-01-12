@@ -7,21 +7,21 @@ namespace TesteDevDbm.Models
         [Key]
         public int IdCliente { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O nome é obrigatório.")]
         [StringLength(100)]
         public string Nome { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O email é obrigatório.")]
         [EmailAddress]
         [StringLength(320)]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O telefone é obrigatório.")]
         [Phone]
         [StringLength(25)]
         public string Telefone { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O endereço é obrigatório.")]
         [StringLength(200)]
         public string Endereco { get; set; }
     }

@@ -1,0 +1,46 @@
+@model IEnumerable<TesteDevDbm.Models.ProtocoloFollow>
+@{
+    ViewData["Title"] = "Acompanhamento de protocolos";
+}
+
+<h2>Acompanhamento de Protocolos</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Id Protocolo
+            </th>
+            <th>
+                Data Ação
+            </th>
+            <th>
+                Descrição
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) 
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.IdFollow)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.ProtocoloId)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.DataAcao)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.DescricaoAcao)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

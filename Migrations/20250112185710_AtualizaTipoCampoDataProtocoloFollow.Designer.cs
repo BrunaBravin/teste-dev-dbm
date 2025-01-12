@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TesteDevDbm.Context;
 
@@ -11,9 +12,11 @@ using TesteDevDbm.Context;
 namespace TesteDevDbm.Migrations
 {
     [DbContext(typeof(ProtocoloContext))]
-    partial class ProtocoloContextModelSnapshot : ModelSnapshot
+    [Migration("20250112185710_AtualizaTipoCampoDataProtocoloFollow")]
+    partial class AtualizaTipoCampoDataProtocoloFollow
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,7 +55,7 @@ namespace TesteDevDbm.Migrations
 
                     b.HasKey("IdCliente");
 
-                    b.ToTable("Clientes", (string)null);
+                    b.ToTable("Clientes");
                 });
 
             modelBuilder.Entity("TesteDevDbm.Models.Protocolo", b =>
@@ -91,7 +94,7 @@ namespace TesteDevDbm.Migrations
 
                     b.HasIndex("ProtocoloStatusId");
 
-                    b.ToTable("Protocolos", (string)null);
+                    b.ToTable("Protocolos");
                 });
 
             modelBuilder.Entity("TesteDevDbm.Models.ProtocoloFollow", b =>
@@ -117,7 +120,7 @@ namespace TesteDevDbm.Migrations
 
                     b.HasIndex("ProtocoloId");
 
-                    b.ToTable("ProtocolosFollow", (string)null);
+                    b.ToTable("ProtocolosFollow");
                 });
 
             modelBuilder.Entity("TesteDevDbm.Models.StatusProtocolo", b =>
@@ -135,7 +138,7 @@ namespace TesteDevDbm.Migrations
 
                     b.HasKey("IdStatus");
 
-                    b.ToTable("StatusProtocolos", (string)null);
+                    b.ToTable("StatusProtocolos");
 
                     b.HasData(
                         new

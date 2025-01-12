@@ -24,6 +24,7 @@ namespace TesteDevDbm.Context
                 new StatusProtocolo { IdStatus = 2, NomeStatus = "Em Andamento" },
                 new StatusProtocolo { IdStatus = 3, NomeStatus = "Fechado" }
             );
+
         }
     }
 }
