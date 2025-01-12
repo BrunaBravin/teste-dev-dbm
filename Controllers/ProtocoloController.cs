@@ -18,22 +18,75 @@ namespace TesteDevDbm.Controllers
             _context = context;
             _protocoloFollowService = protocoloFollowService;
         }
-        public IActionResult Index(int pageNumber = 1, int pageSize = 5)
+        public IActionResult Index(string searchString, string sortOrder, int pageNumber = 1, int pageSize = 10)
         {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.SearchString = searchString;
+
+            ViewBag.IdSortParam = String.IsNullOrEmpty(sortOrder) ? "id_desc" : "";
+            ViewBag.TitleSortParam = sortOrder == "title_desc" ? "title" : "title_desc";
+            ViewBag.DateAberturaSortParam = sortOrder == "DataAbertura" ? "dataAbertura_desc" : "DataAbertura";
+            ViewBag.DataFechamentoSortParam = sortOrder == "DataFechamento" ? "dataFechamento_desc" : "DataFechamento";
+            ViewBag.ClienteSortParam = sortOrder == "Cliente" ? "cliente_desc" : "Cliente";
+            ViewBag.StatusSortParam = sortOrder == "Status" ? "status_desc" : "Status";
+
             var protocolos = _context.Protocolos
                 .Include(p => p.Cliente)
-                .Include(p => p.ProtocoloStatus);
+                .Include(p => p.ProtocoloStatus)
+                .AsQueryable();
 
-            // Calcular o total de registros
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                protocolos = protocolos.Where(p => p.Titulo.Contains(searchString) || p.Cliente.Nome.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "id_desc":
+                    protocolos = protocolos.OrderByDescending(p => p.IdProtocolo);
+                    break;
+                case "title":
+                    protocolos = protocolos.OrderBy(p => p.Titulo);
+                    break;
+                case "title_desc":
+                    protocolos = protocolos.OrderByDescending(p => p.Titulo);
+                    break;
+                case "DataAbertura":
+                    protocolos = protocolos.OrderBy(p => p.DataAbertura);
+                    break;
+                case "dataAbertura_desc":
+                    protocolos = protocolos.OrderByDescending(p => p.DataAbertura);
+                    break;
+                case "DataFechamento":
+                    protocolos = protocolos.OrderBy(p => p.DataFechamento);
+                    break;
+                case "dataFechamento_desc":
+                    protocolos = protocolos.OrderByDescending(p => p.DataFechamento);
+                    break;
+                case "Cliente":
+                    protocolos = protocolos.OrderBy(p => p.Cliente.Nome);
+                    break;
+                case "cliente_desc":
+                    protocolos = protocolos.OrderByDescending(p => p.Cliente.Nome);
+                    break;
+                case "Status":
+                    protocolos = protocolos.OrderBy(p => p.ProtocoloStatus.NomeStatus);
+                    break;
+                case "status_desc":
+                    protocolos = protocolos.OrderByDescending(p => p.ProtocoloStatus.NomeStatus);
+                    break;
+                default:
+                    protocolos = protocolos.OrderBy(p => p.IdProtocolo);
+                    break;
+            }
+
             var totalRecords = protocolos.Count();
 
-            // Paginando os registros
             var protocolosPaginated = protocolos
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .ToList();
 
-            // Criar um objeto para passar para a view
             var viewModel = new ProtocoloViewModel
             {
                 Protocolos = protocolosPaginated,
@@ -43,7 +96,7 @@ namespace TesteDevDbm.Controllers
 
             return View(viewModel);
         }
-        
+
         [HttpGet]
         [Route("Protocolo/Criar")]
         public IActionResult Criar()
