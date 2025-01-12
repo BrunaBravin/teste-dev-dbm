@@ -1,0 +1,66 @@
+@model TesteDevDbm.Models.Protocolo
+
+@{
+    ViewData["Title"] = "Editar Protocolo";
+}
+
+<h1>Editar Protocolo</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Editar">
+            <input type="hidden" asp-for="IdProtocolo" />
+
+            <div class="form-group">
+                <label asp-for="Titulo" class="control-label"></label>
+                <input asp-for="Titulo" class="form-control" />
+                <span asp-validation-for="Titulo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Descricao" class="control-label"></label>
+                <input asp-for="Descricao" class="form-control" />
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DataAbertura" class="control-label"></label>
+                <input asp-for="DataAbertura" class="form-control" type="date" readonly />
+                <span asp-validation-for="DataAbertura" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ClienteId" class="control-label"></label>
+                <select asp-for="ClienteId" class="form-control" asp-items="ViewBag.Clientes">
+                </select>
+                <span asp-validation-for="ClienteId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ProtocoloStatusId" class="control-label"></label>
+                <select asp-for="ProtocoloStatusId" class="form-control" asp-items="ViewBag.Status">
+                </select>
+                <span asp-validation-for="ProtocoloStatusId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DataFechamento" class="control-label"></label>
+                <input asp-for="DataFechamento" class="form-control" type="text" readonly />
+                <span asp-validation-for="DataFechamento" class="text-danger"></span>
+            </div>
+
+            <br>
+
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<br>
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>

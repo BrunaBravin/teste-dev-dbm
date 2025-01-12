@@ -13,6 +13,7 @@ namespace TesteDevDbm.Context
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<StatusProtocolo> StatusProtocolos { get; set; }
         public DbSet<Protocolo> Protocolos { get; set; }
+        public DbSet<ProtocoloFollow> ProtocolosFollow { get; set; }
         
          protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

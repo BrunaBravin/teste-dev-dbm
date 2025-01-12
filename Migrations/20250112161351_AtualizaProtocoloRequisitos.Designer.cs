@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TesteDevDbm.Context;
 
@@ -11,9 +12,11 @@ using TesteDevDbm.Context;
 namespace TesteDevDbm.Migrations
 {
     [DbContext(typeof(ProtocoloContext))]
-    partial class ProtocoloContextModelSnapshot : ModelSnapshot
+    [Migration("20250112161351_AtualizaProtocoloRequisitos")]
+    partial class AtualizaProtocoloRequisitos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,11 +69,11 @@ namespace TesteDevDbm.Migrations
                     b.Property<int>("ClienteId")
                         .HasColumnType("int");
 
-                    b.Property<DateOnly>("DataAbertura")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("DataAbertura")
+                        .HasColumnType("datetime2");
 
-                    b.Property<DateOnly?>("DataFechamento")
-                        .HasColumnType("date");
+                    b.Property<DateTime?>("DataFechamento")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Descricao")
                         .IsRequired()

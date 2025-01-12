@@ -1,0 +1,66 @@
+@model IEnumerable<TesteDevDbm.Models.Protocolo>
+@{
+    ViewData["Title"] = "Listagem de protocolos";
+}
+
+<h2>Protocolos</h2>
+
+<p>
+    <a asp-action="Criar">Novo Protocolo</a> 
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                Data Abertura
+            </th>
+            <th>
+                Data Fechamento
+            </th>
+            <th>
+                Nome Cliente
+            </th>
+            <th>
+                Status
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) 
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.IdProtocolo)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.DataAbertura)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.DataFechamento)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Cliente.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.ProtocoloStatus.NomeStatus)
+                </td>
+                <td>
+                    <a asp-action="Editar" asp-route-id="@item.IdProtocolo">Editar</a> |
+                    <a asp-action="Detalhes" asp-route-id="@item.IdProtocolo">Detalhes</a> |
+                    <a asp-action="Deletar" asp-route-id="@item.IdProtocolo">Deletar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

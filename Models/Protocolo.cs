@@ -7,19 +7,23 @@ namespace TesteDevDbm.Models
         [Key]
         public int IdProtocolo { get; set; }
 
-        [Required]
-        [StringLength(100)]
+        [Required(ErrorMessage = "O nome do protocolo é obrigatório.")]
+        [StringLength(50)]
         public string Titulo { get; set; }
 
-        [StringLength(500)]
+        [Required(ErrorMessage = "A descrição é obrigatória.")]
+        [StringLength(250)]
         public string Descricao { get; set; }
 
-        public DateTime DataAbertura { get; set; }
-        public DateTime? DataFechamento { get; set; }
+        [Required(ErrorMessage = "A data de abertura é obrigatória.")]
+        public DateOnly DataAbertura { get; set; }
+        public DateOnly? DataFechamento { get; set; }
 
+        [Required(ErrorMessage = "O cliente associado é obrigatório.")]
         public int ClienteId { get; set; }
         public Cliente Cliente { get; set; }
 
+        [Required(ErrorMessage = "O status do protocolo é obrigatório.")]
         public int ProtocoloStatusId { get; set; }
         public StatusProtocolo ProtocoloStatus { get; set; }
     }
