@@ -7,7 +7,7 @@
 namespace TesteDevDbm.Migrations
 {
     /// <inheritdoc />
-    public partial class AddStatusProtocolo : Migration
+    public partial class AdicionaTabelaStatusProtocolo : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

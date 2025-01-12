@@ -11,8 +11,8 @@ using TesteDevDbm.Context;
 namespace TesteDevDbm.Migrations
 {
     [DbContext(typeof(ProtocoloContext))]
-    [Migration("20250111205939_AddStatusProtocolo")]
-    partial class AddStatusProtocolo
+    [Migration("20250112010606_AdicionaTabelaStatusProtocolo")]
+    partial class AdicionaTabelaStatusProtocolo
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

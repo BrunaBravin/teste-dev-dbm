@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TesteDevDbm.Context;
 
@@ -11,9 +12,11 @@ using TesteDevDbm.Context;
 namespace TesteDevDbm.Migrations
 {
     [DbContext(typeof(ProtocoloContext))]
-    partial class ProtocoloContextModelSnapshot : ModelSnapshot
+    [Migration("20250112010734_AdicionaTabelaProtocolo")]
+    partial class AdicionaTabelaProtocolo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
