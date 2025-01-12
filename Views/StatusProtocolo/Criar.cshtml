@@ -1,0 +1,29 @@
+@model TesteDevDbm.Models.StatusProtocolo
+@{
+    ViewData["Title"] = "Cadastrar novo status";
+}
+
+<h1>Cadastrar novo status</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Criar">
+            <div class="form-group">
+                <label asp-for="NomeStatus" class="control-label">Nome</label>
+                <input asp-for="NomeStatus" class="form-control" />
+                <span asp-validation-for="NomeStatus" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="submit" value="Criar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<hr />
+<br>
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>

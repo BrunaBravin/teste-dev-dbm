@@ -1,0 +1,41 @@
+@model IEnumerable<TesteDevDbm.Models.StatusProtocolo>
+@{
+    ViewData["Title"] = "Listagem de status de protocolo";
+}
+
+<h2>Status</h2>
+
+<p>
+    <a asp-action="Criar">Novo Status</a> 
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Nome
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) 
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.IdStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.NomeStatus)
+                </td>
+                <td>
+                    <a asp-action="Editar" asp-route-id="@item.IdStatus">Editar</a> |
+                    <a asp-action="Deletar" asp-route-id="@item.IdStatus">Deletar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
