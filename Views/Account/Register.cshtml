@@ -1,0 +1,51 @@
+@model TesteDevDbm.ViewModels.RegisterViewModel
+
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+    <div class="card">
+        <div class="card-header">Registrar-se</div>
+        <div class="card-body">
+            <form asp-action="Register" method="post">
+                <div class="form-group row mb-3">
+                    <label asp-for="Email" class="col-md-4 col-form-label text-md-right"></label>
+                    <div class="col-md-6">
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row mb-3">
+                    <label asp-for="Password" class="col-md-4 col-form-label text-md-right"></label>
+                    <div class="col-md-6">
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger">
+                            É necessário que a senha contenha um caractere maiúsculo, um caractere minúsculo, 
+                            um dígito e um caractere não alfanumérico. As senhas devem ter pelo menos seis caracteres.
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group row mb-3">
+                    <label asp-for="ConfirmPassword" class="col-md-4 col-form-label text-md-right"></label>
+                    <div class="col-md-6">
+                        <input asp-for="ConfirmPassword" class="form-control" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-6 offset-md-4">
+                        <button type="submit" class="btn btn-primary">Registrar</button>
+                    </div>
+                </div>
+            </form>
+            <div class="text-center mt-3">
+                <a asp-action="Login">Já tem uma conta? Faça login</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

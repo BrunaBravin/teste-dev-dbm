@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TesteDevDbm.Context;
+using TesteDevDbm.Models;
 using TesteDevDbm.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +10,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ProtocoloContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ConexaoPadrao")));
 
+builder.Services.AddIdentity<ApplicationUser , IdentityRole>()
+    .AddEntityFrameworkStores<ProtocoloContext>()
+    .AddDefaultTokenProviders();
+    
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IProtocoloFollowService, ProtocoloFollowService>();
@@ -27,6 +33,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

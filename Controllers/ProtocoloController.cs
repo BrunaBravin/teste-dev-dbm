@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,8 @@ namespace TesteDevDbm.Controllers
             _context = context;
             _protocoloFollowService = protocoloFollowService;
         }
+
+        [Authorize]
         public IActionResult Index(string searchString, string sortOrder, int pageNumber = 1, int pageSize = 10)
         {
             ViewBag.CurrentSort = sortOrder;
@@ -97,6 +100,7 @@ namespace TesteDevDbm.Controllers
             return View(viewModel);
         }
 
+        [Authorize]
         [HttpGet]
         [Route("Protocolo/Criar")]
         public IActionResult Criar()
@@ -106,6 +110,7 @@ namespace TesteDevDbm.Controllers
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         [Route("Protocolo/Criar")]
         public IActionResult Criar(Protocolo protocolo)
@@ -126,6 +131,7 @@ namespace TesteDevDbm.Controllers
             return View(protocolo);
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Editar(int id)
         {
@@ -146,6 +152,7 @@ namespace TesteDevDbm.Controllers
             return View(protocolo);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Editar(Protocolo protocolo)
         {
@@ -174,6 +181,7 @@ namespace TesteDevDbm.Controllers
             return View(protocolo);
         }
 
+        [Authorize]
         public IActionResult Detalhes(int id)
         {
             var protocolo = _context.Protocolos
@@ -187,6 +195,7 @@ namespace TesteDevDbm.Controllers
             return View(protocolo);
         }
 
+        [Authorize]
         public IActionResult Deletar(int id)
         {
             var protocolo = _context.Protocolos
@@ -201,6 +210,7 @@ namespace TesteDevDbm.Controllers
             return View(protocolo);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Deletar(Protocolo protocolo)
         {

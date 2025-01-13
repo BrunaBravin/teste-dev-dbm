@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TesteDevDbm.Context;
 using TesteDevDbm.Models;
@@ -13,19 +14,22 @@ namespace TesteDevDbm.Controllers
             _context = context;
         }
 
+        [Authorize]
         public IActionResult Index()
-       {
+        {
             var statusprocolo = _context.StatusProtocolos.ToList();
             return View(statusprocolo);
-       }
+        }
 
-       [HttpGet]
+        [Authorize]
+        [HttpGet]
         [Route("Status/Criar")]
         public IActionResult Criar()
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         [Route("Status/Criar")]
         public IActionResult Criar(StatusProtocolo statusprocolo)
@@ -39,44 +43,48 @@ namespace TesteDevDbm.Controllers
             return View(statusprocolo);
         }
 
-       public IActionResult Editar(int id)
+        [Authorize]
+        public IActionResult Editar(int id)
         {
             var statusprocolo = _context.StatusProtocolos.Find(id);
 
             if (statusprocolo == null)
-              return NotFound();
+                return NotFound();
 
             return View(statusprocolo);
         }
 
+        [Authorize]
         [HttpPost]
-        public IActionResult Editar(StatusProtocolo statusprocolo) 
+        public IActionResult Editar(StatusProtocolo statusprocolo)
         {
             if (statusprocolo != null)
             {
                 Console.WriteLine(statusprocolo);
             }
-            
+
             var statusprocoloBanco = _context.StatusProtocolos.Find(statusprocolo.IdStatus);
 
             statusprocoloBanco.NomeStatus = statusprocolo.NomeStatus;
 
-            _context.StatusProtocolos.Update(statusprocoloBanco); 
+            _context.StatusProtocolos.Update(statusprocoloBanco);
             _context.SaveChanges();
 
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize]
         public IActionResult Deletar(int id)
         {
             var statusprocolo = _context.StatusProtocolos.Find(id);
 
             if (statusprocolo == null)
-              return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index));
 
             return View(statusprocolo);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Deletar(StatusProtocolo statusprocolo)
         {

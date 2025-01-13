@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TesteDevDbm.Context;
 using TesteDevDbm.Models;
@@ -12,17 +13,21 @@ namespace TesteDevDbm.Controllers
         {
             _context = context;
         }
-       public IActionResult Index()
-       {
+
+        [Authorize]
+        public IActionResult Index()
+        {
             var clientes = _context.Clientes.ToList();
             return View(clientes);
-       }
+        }
 
-       public IActionResult Criar()
+        [Authorize]
+        public IActionResult Criar()
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Criar(Cliente cliente)
         {
@@ -30,29 +35,31 @@ namespace TesteDevDbm.Controllers
             {
                 _context.Clientes.Add(cliente);
                 _context.SaveChanges();
-                return RedirectToAction(nameof(Index)); 
+                return RedirectToAction(nameof(Index));
             }
             return View(cliente);
         }
 
+        [Authorize]
         public IActionResult Editar(int id)
         {
             var cliente = _context.Clientes.Find(id);
 
             if (cliente == null)
-              return NotFound();
+                return NotFound();
 
             return View(cliente);
         }
 
+        [Authorize]
         [HttpPost]
-        public IActionResult Editar(Cliente cliente) 
+        public IActionResult Editar(Cliente cliente)
         {
             if (cliente != null)
             {
                 Console.WriteLine(cliente);
             }
-            
+
             var clienteBanco = _context.Clientes.Find(cliente.IdCliente);
 
             clienteBanco.Nome = cliente.Nome;
@@ -60,32 +67,35 @@ namespace TesteDevDbm.Controllers
             clienteBanco.Telefone = cliente.Telefone;
             clienteBanco.Endereco = cliente.Endereco;
 
-            _context.Clientes.Update(clienteBanco); 
+            _context.Clientes.Update(clienteBanco);
             _context.SaveChanges();
 
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize]
         public IActionResult Detalhes(int id)
         {
             var cliente = _context.Clientes.Find(id);
 
             if (cliente == null)
-              return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index));
 
             return View(cliente);
         }
 
+        [Authorize]
         public IActionResult Deletar(int id)
         {
             var cliente = _context.Clientes.Find(id);
 
             if (cliente == null)
-              return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index));
 
             return View(cliente);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Deletar(Cliente cliente)
         {

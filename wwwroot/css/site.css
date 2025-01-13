@@ -20,3 +20,15 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+h1, h2 {
+  color: #343a40;
+}
+
+.container {
+  max-width: 960px;
+}
+
+.btn-lg {
+  margin: 10px;
+}
