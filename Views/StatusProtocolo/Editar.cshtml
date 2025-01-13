@@ -4,30 +4,27 @@
     ViewData["Title"] = "Editar status de protocolo";
 }
 
-<h1>Editar Status</h1>
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center">Editar Protocolo</h2>
+            <hr />
+            <form asp-action="Editar">
+                <input type="hidden" asp-for="IdStatus" />
 
-<hr />
+                <div class="form-group mb-3">
+                    <label asp-for="NomeStatus" class="form-label">Nome Status</label>
+                    <input asp-for="NomeStatus" class="form-control" />
+                    <span asp-validation-for="NomeStatus" class="text-danger"></span>
+                </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Editar">
-            <input type="hidden" asp-for="IdStatus" />
-
-            <div class="form-group">
-                <label asp-for="NomeStatus" class="control-label">Nome Status</label>
-                <input asp-for="NomeStatus" class="form-control" />
-                <span asp-validation-for="NomeStatus" class="text-danger"></span>
-            </div>
-
-            <br>
-            <div class="form-group">
-                <input type="submit" value="Salvar" class="btn btn-primary" />
-            </div>
-        </form>
+                <div class="d-flex justify-content-between align-items-center mt-4">
+                    <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+                    <button type="submit" value="Salvar" class="btn btn-primary">Salvar Alterações</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
-
-<br>
-<div>
-    <a asp-action="Index">Voltar</a>
+</div>
 </div>

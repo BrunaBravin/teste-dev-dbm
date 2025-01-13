@@ -1,46 +1,46 @@
 @model IEnumerable<TesteDevDbm.Models.ProtocoloFollow>
+
 @{
-    ViewData["Title"] = "Acompanhamento de protocolos";
+    ViewData["Title"] = "Acompanhamento de Protocolos";
 }
 
-<h2>Acompanhamento de Protocolos</h2>
+<div class="container my-5">
+    <div class="row">
+        <div class="col">
+            <h2 class="text-center mb-5">Acompanhamento de Protocolos</h2>
 
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Id
-            </th>
-            <th>
-                Id Protocolo
-            </th>
-            <th>
-                Data Ação
-            </th>
-            <th>
-                Descrição
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model) 
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(model => item.IdFollow)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.ProtocoloId)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.DataAcao)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.DescricaoAcao)
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">ID Protocolo</th>
+                            <th scope="col">Data Ação</th>
+                            <th scope="col">Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Any())
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(model => item.IdFollow)</td>
+                                    <td>@Html.DisplayFor(model => item.ProtocoloId)</td>
+                                    <td>@Html.DisplayFor(model => item.DataAcao)</td>
+                                    <td>@Html.DisplayFor(model => item.DescricaoAcao)</td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="5" class="text-center text-muted">Nenhum acompanhamento encontrado.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

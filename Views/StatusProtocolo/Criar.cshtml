@@ -3,27 +3,31 @@
     ViewData["Title"] = "Cadastrar novo status";
 }
 
-<h1>Cadastrar novo status</h1>
-
-<hr />
-
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Criar">
-            <div class="form-group">
-                <label asp-for="NomeStatus" class="control-label">Nome</label>
-                <input asp-for="NomeStatus" class="form-control" />
-                <span asp-validation-for="NomeStatus" class="text-danger"></span>
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center mb-4">Cadastrar Novo Protocolo</h2>
+            <div class="card">
+                <div class="card-body">
+                    <form asp-action="Criar">
+                        <div class="form-group mb-3">
+                            <label asp-for="NomeStatus" class="control-label fw-bold">Nome</label>
+                            <input asp-for="NomeStatus" class="form-control" />
+                            <span asp-validation-for="NomeStatus" class="text-danger"></span>
+                        </div>
+                        <br>
+                        <div class="text-center d-flex justify-content-between align-items-center mt-4">
+                            <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+                            <button type="submit" value="Criar" class="btn btn-primary">Criar Protocolo</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <br>
-            <div class="form-group">
-                <input type="submit" value="Criar" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
+</div>
+
+</div>
 </div>
 <hr />
 <br>
-<div>
-    <a asp-action="Index">Voltar</a>
-</div>

@@ -2,130 +2,101 @@
 
 @model ProtocoloViewModel
 @{
-    ViewData["Title"] = "Listagem de protocolos";
+    ViewData["Title"] = "Listagem de Protocolos";
 }
 
-<h2>Protocolos</h2>
+<div class="my-5">
+    <h2 class="text-center mb-4">Protocolos</h2>
 
-<p>
-    <a asp-action="Criar">Novo Protocolo</a>
-</p>
+    <div class="d-flex justify-content-between mb-4">
+        <a asp-action="Criar" class="btn btn-primary">+ Novo Protocolo</a>
 
-<form asp-action="Index" method="get">
-    <div class="container">
-        <div class="row height d-flex justify-content-center align-items-center">
-            <div class="col-md-8">
-                <div class="search">
-                    <i class="fa fa-search"></i>
-                    <input type="text" name="searchString" value="@ViewBag.CurrentFilter" class="form-control" placeholder="Buscar por título ou cliente...">
-                    <button type="submit" class="btn btn-primary">Buscar</button>
-                </div>
+        <form asp-action="Index" method="get" class="d-flex align-items-center w-50">
+            <div class="input-group w-100">
+                <input type="text" name="searchString" value="@ViewBag.CurrentFilter" class="form-control form-control-mg" placeholder="Buscar por título ou cliente...">
+                <button type="submit" class="btn btn-primary btn-mg ml-2">Buscar</button>
             </div>
-        </div>
+        </form>
     </div>
-</form>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Id
-                <a asp-action="Index" asp-route-sortOrder="@ViewBag.IdSortParam">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-arrow-down-up" viewBox="0 0 16 16" style="vertical-align: middle;">
-                        <path fill-rule="evenodd"
-                            d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5m-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5" />
-                    </svg>
-                </a>
-            </th>
-            <th>
-                Título
-                <a asp-action="Index" asp-route-sortOrder="@ViewBag.TitleSortParam">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-arrow-down-up" viewBox="0 0 16 16" style="vertical-align: middle;">
-                        <path fill-rule="evenodd"
-                            d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5m-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5" />
-                    </svg>
-                </a>
-            </th>
-            <th>
-                Data de Abertura
-                <a asp-action="Index" asp-route-sortOrder="@ViewBag.DateAberturaSortParam">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-arrow-down-up" viewBox="0 0 16 16" style="vertical-align: middle;">
-                        <path fill-rule="evenodd"
-                            d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5m-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5" />
-                    </svg>
-                </a>
-            </th>
-            <th>
-                Data de Fechamento
-                <a asp-action="Index" asp-route-sortOrder="@ViewBag.DataFechamentoSortParam">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-arrow-down-up" viewBox="0 0 16 16" style="vertical-align: middle;">
-                        <path fill-rule="evenodd"
-                            d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5m-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5" />
-                    </svg>
-                </a>
-            </th>
-            <th>
-                Cliente
-                <a asp-action="Index" asp-route-sortOrder="@ViewBag.ClienteSortParam">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-arrow-down-up" viewBox="0 0 16 16" style="vertical-align: middle;">
-                        <path fill-rule="evenodd"
-                            d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5m-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5" />
-                    </svg>
-                </a>
-            </th>
-            <th>
-                Status
-                <a asp-action="Index" asp-route-sortOrder="@ViewBag.StatusSortParam">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-arrow-down-up" viewBox="0 0 16 16" style="vertical-align: middle;">
-                        <path fill-rule="evenodd"
-                            d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5m-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5" />
-                    </svg>
-                </a>
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Protocolos)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(model => item.IdProtocolo)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.Titulo)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.DataAbertura)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.DataFechamento)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.Cliente.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.ProtocoloStatus.NomeStatus)
-                </td>
-                <td>
-                    <a asp-action="Editar" asp-route-id="@item.IdProtocolo">Editar</a> |
-                    <a asp-action="Detalhes" asp-route-id="@item.IdProtocolo">Detalhes</a> |
-                    <a asp-action="Deletar" asp-route-id="@item.IdProtocolo">Deletar</a>
-                </td>
+    <table class="table table-bordered table-sm" >
+        <thead class="table-light">
+            <tr >
+                <th class="m-3 pb-2">
+                    ID
+                    <a asp-action="Index" asp-route-sortOrder="@ViewBag.IdSortParam">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16" style="vertical-align: middle;">
+                            <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5m-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5" />
+                        </svg>
+                    </a>
+                </th>
+                <th class="m-3 p-2">
+                    Título
+                    <a asp-action="Index" asp-route-sortOrder="@ViewBag.TitleSortParam">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16" style="vertical-align: middle;">
+                            <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5m-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5" />
+                        </svg>
+                    </a>
+                </th>
+                <th class="m-3 p-2">
+                    Data de Abertura
+                    <a asp-action="Index" asp-route-sortOrder="@ViewBag.DateAberturaSortParam">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16" style="vertical-align: middle;">
+                            <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5m-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5" />
+                        </svg>
+                    </a>
+                </th>
+                <th class="m-3 p-2">
+                    Data de Fechamento
+                    <a asp-action="Index" asp-route-sortOrder="@ViewBag.DataFechamentoSortParam">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16" style="vertical-align: middle;">
+                            <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5m-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5" />
+                        </svg>
+                    </a>
+                </th>
+                <th class="m-3 p-2">
+                    Cliente
+                    <a asp-action="Index" asp-route-sortOrder="@ViewBag.ClienteSortParam">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16" style="vertical-align: middle;">
+                            <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5m-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5" />
+                        </svg>
+                    </a>
+                </th>
+                <th class="m-3 p-2">
+                    Status
+                    <a asp-action="Index" asp-route-sortOrder="@ViewBag.StatusSortParam">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16" style="vertical-align: middle;">
+                            <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5m-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5" />
+                        </svg>
+                    </a>
+                </th>
+                <th class="m-3 p-2">Ações</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Protocolos)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(model => item.IdProtocolo)</td>
+                    <td>@Html.DisplayFor(model => item.Titulo)</td>
+                    <td>@Html.DisplayFor(model => item.DataAbertura)</td>
+                    <td>@Html.DisplayFor(model => item.DataFechamento)</td>
+                    <td>@Html.DisplayFor(model => item.Cliente.Nome)</td>
+                    <td >@Html.DisplayFor(model => item.ProtocoloStatus.NomeStatus)</td>
+                    <td class="m-3 p-2">
+                        <a asp-action="Editar" asp-route-id="@item.IdProtocolo" class="btn btn-warning btn-sm">Editar</a> |
+                        <a asp-action="Detalhes" asp-route-id="@item.IdProtocolo" class="btn btn-info btn-sm">Detalhes</a> |
+                        <a asp-action="Deletar" asp-route-id="@item.IdProtocolo" class="btn btn-danger btn-sm">Deletar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
-<div>
-    @for (int i = 1; i <= Model.TotalPages; i++)
-    {
-        <a asp-action="Index" asp-route-pageNumber="@i" class="btn btn-link">@i</a>
-    }
+    <div class="d-flex justify-content-center mt-4">
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            <a asp-action="Index" asp-route-pageNumber="@i" class="btn btn-link">@i</a>
+        }
+    </div>
 </div>

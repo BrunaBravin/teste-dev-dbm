@@ -1,60 +1,56 @@
 @model IEnumerable<TesteDevDbm.Models.Cliente>
 @{
-    ViewData["Title"] = "Listagem de clientes";
+    ViewData["Title"] = "Listagem de Clientes";
 }
 
-<h2>Clientes</h2>
+<div class="container my-5">
+    <div class="row">
+        <div class="col">
+            <h2 class="text-center">Listagem de Clientes</h2>
+            <div class="d-flex justify-content-end mb-3">
+                <a asp-action="Criar" class="btn btn-primary">+ Novo Cliente</a>
+            </div>
 
-<p>
-    <a asp-action="Criar">Novo Cliente</a> 
-</p>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Id
-            </th>
-            <th>
-                Nome
-            </th>
-            <th>
-                E-mail
-            </th>
-            <th>
-                Telefone
-            </th>
-            <th>
-                Endereço
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model) 
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(model => item.IdCliente)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.Telefone)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.Endereco)
-                </td>
-                <td>
-                    <a asp-action="Editar" asp-route-id="@item.IdCliente">Editar</a> |
-                    <a asp-action="Detalhes" asp-route-id="@item.IdCliente">Detalhes</a> |
-                    <a asp-action="Deletar" asp-route-id="@item.IdCliente">Deletar</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">E-mail</th>
+                            <th scope="col">Telefone</th>
+                            <th scope="col">Endereço</th>
+                            <th scope="col" class="text-center">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Any())
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(model => item.IdCliente)</td>
+                                    <td>@Html.DisplayFor(model => item.Nome)</td>
+                                    <td>@Html.DisplayFor(model => item.Email)</td>
+                                    <td>@Html.DisplayFor(model => item.Telefone)</td>
+                                    <td>@Html.DisplayFor(model => item.Endereco)</td>
+                                    <td class="text-center">
+                                        <a asp-action="Editar" asp-route-id="@item.IdCliente" class="btn btn-sm btn-warning me-1">Editar</a>
+                                        <a asp-action="Detalhes" asp-route-id="@item.IdCliente" class="btn btn-sm btn-info me-1 text-white">Detalhes</a>
+                                        <a asp-action="Deletar" asp-route-id="@item.IdCliente" class="btn btn-sm btn-danger">Deletar</a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6" class="text-center text-muted">Nenhum cliente encontrado.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

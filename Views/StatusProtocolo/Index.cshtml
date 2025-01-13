@@ -3,39 +3,39 @@
     ViewData["Title"] = "Listagem de status de protocolo";
 }
 
-<h2>Status</h2>
-
-<p>
-    <a asp-action="Criar">Novo Status</a> 
-</p>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Id
-            </th>
-            <th>
-                Nome
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model) 
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(model => item.IdStatus)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.NomeStatus)
-                </td>
-                <td>
-                    <a asp-action="Editar" asp-route-id="@item.IdStatus">Editar</a> |
-                    <a asp-action="Deletar" asp-route-id="@item.IdStatus">Deletar</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="container my-5">
+    <div class="row">
+        <div class="col">
+            <h2 class="text-center">Status</h2>
+            <div class="d-flex justify-content-end mb-3">
+                <a asp-action="Criar" class="btn btn-primary">+ Novo Status</a>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col" class="text-center">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(model => item.IdStatus)</td>
+                                <td>@Html.DisplayFor(model => item.NomeStatus)</td>
+                                <td class="text-center">
+                                    <a asp-action="Editar" asp-route-id="@item.IdStatus"
+                                        class="btn btn-sm btn-warning me-1">Editar</a> |
+                                    <a asp-action="Deletar" asp-route-id="@item.IdStatus"
+                                        class="btn btn-sm btn-danger">Deletar</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

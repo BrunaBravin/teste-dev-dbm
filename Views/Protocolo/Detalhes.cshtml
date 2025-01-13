@@ -4,49 +4,59 @@
     ViewData["Title"] = "Detalhes do Protocolo";
 }
 
-<h1>Detalhes</h1>
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <h2 class="text-center">Detalhes do Protocolo</h2>
+            <hr />
+            <div class="card">
+                <div class="card-body">
+                    <dl class="row">
+                        <input type="hidden" asp-for="IdProtocolo" />
+                        <div class="col-sm-4">
+                            <dt class="form-label">Título</dt>
+                        </div>
+                        <div class="col-sm-8">
+                            <dd>@Html.DisplayFor(x => x.Titulo)</dd>
+                        </div>
+                        <div class="col-sm-4">
+                            <dt class="form-label">Descrição</dt>
+                        </div>
+                        <div class="col-sm-8">
+                            <dd>@Html.DisplayFor(x => x.Descricao)</dd>
+                        </div>
+                        <div class="col-sm-4">
+                            <dt class="form-label">Cliente</dt>
+                        </div>
+                        <div class="col-sm-8">
+                            <dd>@Html.DisplayFor(x => x.Cliente.Nome)</dd>
+                        </div>
+                        <div class="col-sm-4">
+                            <dt class="form-label">Status Protocolo</dt>
+                        </div>
+                        <div class="col-sm-8">
+                            <dd>@Html.DisplayFor(x => x.ProtocoloStatus.NomeStatus)</dd>
+                        </div>
+                        <div class="col-sm-4">
+                            <dt class="form-label">Data de Abertura</dt>
+                        </div>
+                        <div class="col-sm-8">
+                            <dd>@Html.DisplayFor(x => x.DataAbertura)</dd>
+                        </div>
+                        <div class="col-sm-4">
+                            <dt class="form-label">Data de Fechamento</dt>
+                        </div>
+                        <div class="col-sm-8">
+                            <dd>@Html.DisplayFor(x => x.DataFechamento)</dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
 
-<div>
-    <dl class="row">
-        <input type="hidden" asp-for="IdProtocolo" />
-        <dt class="col-sm-2">
-            Título
-        </dt>
-        <dt class="col-sm-10">
-            @Html.DisplayFor(x => x.Titulo)
-        </dt>
-        <dt class="col-sm-2">
-            Descrição
-        </dt>
-        <dt class="col-sm-10">
-            @Html.DisplayFor(x => x.Descricao)
-        </dt>
-        <dt class="col-sm-2">
-            Cliente
-        </dt>
-        <dt class="col-sm-10">
-            @Html.DisplayFor(x => x.Cliente.Nome)
-        </dt>
-        <dt class="col-sm-2">
-            Status Protocolo
-        </dt>
-        <dt class="col-sm-10">
-            @Html.DisplayFor(x => x.ProtocoloStatus.NomeStatus)
-        </dt>
-        <dt class="col-sm-2">
-            Data de Abertura
-        </dt>
-        <dt class="col-sm-10">
-            @Html.DisplayFor(x => x.DataAbertura)
-        </dt>
-        <dt class="col-sm-2">
-            Data de Fechamento
-        </dt>
-        <dt class="col-sm-10">
-            @Html.DisplayFor(x => x.DataFechamento)
-        </dt>
-
-    </dl>
+            <div class="d-flex justify-content-between mt-4">
+                <a asp-action="Editar" asp-route-id="@Model.IdProtocolo" class="btn btn-primary">Editar</a>
+                <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+            </div>
+        </div>
+    </div>
 </div>
-<a asp-action="Editar" asp-route-id="@Model.IdProtocolo">Editar</a>
-<a asp-action="Index">Voltar</a>
