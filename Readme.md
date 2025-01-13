@@ -17,8 +17,7 @@ Para rodar este projeto localmente, siga os passos abaixo:
 
 Primeiro, clone este repositório em seu computador:
 
-```bash
-git clone https://github.com/SeuUsuario/NomeDoProjeto.git
+git clone https://github.com/BrunaBravin/teste-dev-dbm.git
 
 ### 2. Instale o .NET Core 8
 
